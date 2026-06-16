@@ -1,12 +1,9 @@
-package com.pluralsight.sneakerdrops.sneakerdrops.controllers;
+package com.pluralsight.sneakerdrops.sneakerdropsapi.controllers;
 
 
-import com.pluralsight.sneakerdrops.sneakerdrops.models.Sneaker;
-import com.pluralsight.sneakerdrops.sneakerdrops.service.SneakerService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pluralsight.sneakerdrops.sneakerdropsapi.models.Sneaker;
+import com.pluralsight.sneakerdrops.sneakerdropsapi.service.SneakerService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +19,18 @@ public class SneakerController {
     }
 
     @GetMapping
-    public List<Sneaker> getAll(){
-        return sneakerService.allSneakers();
+    public List<Sneaker> getAll(@RequestParam(required = false) Integer year,
+                             @RequestParam(required = false) String model,
+                                @RequestParam(required = false) String brand,
+                             @RequestParam(required = false) Double minPrice,
+                                @RequestParam(required = false) Double maxPrice,
+                             @RequestParam(required = false) String sort){
+        return sneakerService.search(year, model, brand, minPrice, maxPrice, sort);
+    }
+
+    @GetMapping("/{id}")
+    public Sneaker findById(@PathVariable long id){
+        return sneakerService.byId(id);
     }
 
     @GetMapping("/count")

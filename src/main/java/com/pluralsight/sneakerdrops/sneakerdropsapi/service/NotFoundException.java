@@ -1,4 +1,4 @@
-package com.pluralsight.sneakerdrops.sneakerdrops.service;
+package com.pluralsight.sneakerdrops.sneakerdropsapi.service;
 
 public class NotFoundException extends RuntimeException{
     public NotFoundException(String message){

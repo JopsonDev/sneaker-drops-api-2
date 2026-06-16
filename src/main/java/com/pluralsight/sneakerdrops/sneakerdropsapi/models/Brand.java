@@ -1,4 +1,4 @@
-package com.pluralsight.sneakerdrops.sneakerdrops.models;
+package com.pluralsight.sneakerdrops.sneakerdropsapi.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
